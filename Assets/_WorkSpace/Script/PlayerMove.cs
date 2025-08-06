@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody _rb;
+    Transform _tr;
 
     float x;
     float y;
@@ -15,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     float _moveSpeed;
     void Start()
     {
+        _tr = transform;
         _rb = GetComponent<Rigidbody>();
     }
     void Update()
