@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    Rigidbody _rb;
+
     float x;
     float z;
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
