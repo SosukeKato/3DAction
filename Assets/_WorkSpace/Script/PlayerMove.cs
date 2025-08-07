@@ -11,9 +11,13 @@ public class PlayerMove : MonoBehaviour
     float y;
     float z;
     Vector3 _velocity;
+    Vector3 _origin;
+    Vector3 _front;
 
     [SerializeField]
     float _moveSpeed;
+    [SerializeField]
+    float _rayFrontDistance;
     void Start()
     {
         _tr = transform;
@@ -21,10 +25,20 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
+        #region
+
+        #region キャラクターの移動
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
-
         _velocity = new Vector3(x, y, z);
         _rb.velocity = _velocity * _moveSpeed;
+        #endregion
+
+        #region 接地判定
+        _origin = _tr.position;
+        _front = Vector3.forward;
+        #endregion
+
+        #endregion
     }
 }
