@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     float z;
     Vector3 _velocity;
     Vector3 _origin;
+    Vector3 _under;
     Vector3 _front;
 
     [SerializeField]
@@ -36,7 +37,7 @@ public class PlayerMove : MonoBehaviour
 
         #region ê⁄ínîªíË
         _origin = _tr.position;
-        _front = Vector3.forward;
+        _under = Vector3.down;
         #endregion
 
         #endregion
