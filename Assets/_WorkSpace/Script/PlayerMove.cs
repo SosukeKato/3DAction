@@ -19,6 +19,8 @@ public class PlayerMove : MonoBehaviour
     float _moveSpeed;
     [SerializeField]
     float _rayFrontDistance;
+    [SerializeField]
+    float _rayUnderDistance;
     void Start()
     {
         _tr = transform;
@@ -35,9 +37,21 @@ public class PlayerMove : MonoBehaviour
         _rb.velocity = _velocity * _moveSpeed;
         #endregion
 
-        #region 接地判定
+        #region Raycast使用処理
+        //Rayの発射位置などを管理する変数
         _origin = _tr.position;
         _under = Vector3.down;
+        #region 接地判定
+        //Rayの衝突管理
+        RaycastHit _onGround;
+        //接地判定処理
+        if (Physics.Raycast(_origin,_under,out _onGround,_rayUnderDistance))
+        {
+
+        }
+        Debug.DrawRay(_origin, _under * _rayUnderDistance, Color.red);
+        #endregion
+
         #endregion
 
         #endregion
