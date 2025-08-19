@@ -60,8 +60,16 @@ public class PlayerMove : MonoBehaviour
         #endregion
 
         #region UŒ‚‚Ìˆ—
-        //Ray‚ÌÕ“ËŠÇ—
+        //Ray‚ÌÕ“Ë‚ÅUŒ‚‚Ìƒqƒbƒg”»’è‚ğŠÇ—‚·‚é•Ï”
         RaycastHit _attackRange;
+        //
+        if (Physics.Raycast(_origin,_front,out _attackRange,_rayFrontDistance))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                //“G‚ÌHP‚ğŠÇ—‚·‚é•Ï”‚ğŒÄ‚Ño‚µ‚ÄUŒ‚‚Ìˆ—‚ğ‚·‚éƒvƒƒOƒ‰ƒ€‚ğ’Ç‰Á—\’è
+            }
+        }
         #endregion
 
         #endregion
