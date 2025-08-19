@@ -18,6 +18,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     float _moveSpeed;
     [SerializeField]
+    int _jumpPower;
+    [SerializeField]
     float _rayFrontDistance;
     [SerializeField]
     float _rayUnderDistance;
@@ -47,7 +49,10 @@ public class PlayerMove : MonoBehaviour
         //ê⁄ínîªíËèàóù
         if (Physics.Raycast(_origin,_under,out _onGround,_rayUnderDistance))
         {
-
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _rb.AddForce(0, _jumpPower, 0);
+            }
         }
         Debug.DrawRay(_origin, _under * _rayUnderDistance, Color.red);
         #endregion
