@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -61,9 +59,9 @@ public class PlayerMove : MonoBehaviour
 
         #region UŒ‚‚Ìˆ—
         //Ray‚ÌÕ“Ë‚ÅUŒ‚‚Ìƒqƒbƒg”»’è‚ğŠÇ—‚·‚é•Ï”
-        RaycastHit _attackRange;
+        RaycastHit _hitEnemy;
         //UŒ‚‚ª“–‚½‚é‹——£‚Ìˆ—
-        if (Physics.Raycast(_origin,_front,out _attackRange,_rayFrontDistance))
+        if (Physics.Raycast(_origin,_front,out _hitEnemy,_rayFrontDistance))
         {
             //UŒ‚‚Ìˆ—
             if (Input.GetMouseButtonDown(0))
