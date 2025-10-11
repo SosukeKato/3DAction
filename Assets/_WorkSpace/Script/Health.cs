@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    float _maxHP;
+    [SerializeField]
+    float _playerHP;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(_playerHP >= _maxHP)
+        {
+            _playerHP = _maxHP;
+        }
+        if(_playerHP < 0)
+        {
+            //キャラクターの死亡処理
+        }
     }
 }
