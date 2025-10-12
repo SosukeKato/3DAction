@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class AttackObject : MonoBehaviour
 {
-    GameObject _hitObj;
+    Health _health;
+
+    [SerializeField]
+    float _damage;
     private void OnTriggerEnter(Collider trg)
     {
-        _hitObj = trg.gameObject;
+        _health = trg.gameObject.GetComponent<Health>();
+        _health._playerHP -= _damage;
     }
 }
