@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     float _maxHP;
     [SerializeField]
-    float _playerHP;
+    public float _playerHP;
 
     void Update()
     {
