@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviour
             //UŒ‚‚Ìˆ—
             if (Input.GetMouseButtonDown(0))
             {
-                //“G‚ÌHP‚ğŠÇ—‚·‚é•Ï”‚ğŒÄ‚Ño‚µ‚ÄUŒ‚‚Ìˆ—‚ğ‚·‚éƒvƒƒOƒ‰ƒ€‚ğ’Ç‰Á—\’è
+                _hitEnemy.collider.gameObject.GetComponent<Health>();
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
