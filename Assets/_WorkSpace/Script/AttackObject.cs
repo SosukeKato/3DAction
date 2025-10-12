@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameObject _hitObj;
+    private void OnTriggerEnter(Collider trg)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _hitObj = trg.gameObject;
     }
 }
