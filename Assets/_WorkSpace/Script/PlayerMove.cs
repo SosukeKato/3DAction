@@ -5,10 +5,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody _rb;
     Transform _tr;
 
-    float x;
-    float y;
-    float z;
-    Vector3 _velocity;
+    Vector3 _move;
     Vector3 _origin;
     Vector3 _under;
     Vector3 _front;
@@ -31,10 +28,8 @@ public class PlayerMove : MonoBehaviour
         #region
 
         #region キャラクターの移動
-        x = Input.GetAxisRaw("Horizontal");
-        z = Input.GetAxisRaw("Vertical");
-        _velocity = new Vector3(x, y, z);
-        _rb.velocity = _velocity * _moveSpeed;
+        _move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        _tr.position += new Vector3(_move.x * Time.deltaTime * _moveSpeed, _move.y, _move.z * Time.deltaTime * _moveSpeed);
         #endregion
 
         #region Raycast使用処理
@@ -66,7 +61,7 @@ public class PlayerMove : MonoBehaviour
             //攻撃の処理
             if (Input.GetMouseButtonDown(0))
             {
-                _hitEnemy.collider.gameObject.GetComponent<Health>();
+                _hitEnemy.collider.gameObject.GetComponent<Health>();   
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
