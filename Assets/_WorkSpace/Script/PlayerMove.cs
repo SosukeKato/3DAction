@@ -21,8 +21,10 @@ public class PlayerMove : MonoBehaviour
     float _rayUnderDistance;
 
     #region UŒ‚‚Ìˆ—‚Ég‚¤•Ï”
+    float _damageBuff = 1;
+
     [SerializeField]
-    int _NAttackDamage;
+    int _nAttackDamage;
     #endregion
     void Start()
     {
@@ -68,7 +70,7 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _hpt = _hitEnemy.collider.gameObject.GetComponent<Health>();
-                _hpt._nowHP -= _NAttackDamage;
+                _hpt._nowHP -= _nAttackDamage * _damageBuff;
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
