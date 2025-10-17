@@ -4,6 +4,7 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody _rb;
     Transform _tr;
+    Health _hpt;
 
     Vector3 _move;
     Vector3 _origin;
@@ -18,6 +19,11 @@ public class PlayerMove : MonoBehaviour
     float _rayFrontDistance;
     [SerializeField]
     float _rayUnderDistance;
+
+    #region UŒ‚‚Ìˆ—‚Ég‚¤•Ï”
+    [SerializeField]
+    int _NAttackDamage;
+    #endregion
     void Start()
     {
         _tr = transform;
@@ -61,7 +67,8 @@ public class PlayerMove : MonoBehaviour
             //UŒ‚‚Ìˆ—
             if (Input.GetMouseButtonDown(0))
             {
-                _hitEnemy.collider.gameObject.GetComponent<Health>();   
+                _hpt = _hitEnemy.collider.gameObject.GetComponent<Health>();
+                _hpt._nowHP -= _NAttackDamage;
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);

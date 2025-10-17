@@ -9,6 +9,6 @@ public class AttackObject : MonoBehaviour
     private void OnTriggerEnter(Collider trg)
     {
         _health = trg.gameObject.GetComponent<Health>();
-        _health._playerHP -= _damage;
+        _health._nowHP -= _damage;
     }
 }

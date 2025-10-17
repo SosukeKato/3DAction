@@ -5,15 +5,15 @@ public class Health : MonoBehaviour
     [SerializeField]
     float _maxHP;
     [SerializeField]
-    public float _playerHP;
+    public float _nowHP;
 
     void Update()
     {
-        if(_playerHP >= _maxHP)
+        if(_nowHP >= _maxHP)
         {
-            _playerHP = _maxHP;
+            _nowHP = _maxHP;
         }
-        if(_playerHP < 0)
+        if(_nowHP < 0)
         {
             //キャラクターの死亡処理
         }
