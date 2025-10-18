@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     Vector3 _under;
     Vector3 _front;
 
+    bool _isDash;
+
     [SerializeField]
     float _moveSpeed;
     [SerializeField]
@@ -74,6 +76,13 @@ public class Player : MonoBehaviour
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
+        #endregion
+
+        #region ‰ñ”ğ‚Ìˆ—
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _isDash = true;
+        }
         #endregion
 
         #endregion
