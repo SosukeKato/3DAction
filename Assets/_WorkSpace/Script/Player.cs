@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         #endregion
 
         #region ‰ñ”ğ‚Ìˆ—
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if ((Input.GetKeyDown(KeyCode.LeftShift)) && ((_move.x != 0) || (_move.z != 0)))
         {
             _isDash = true;
         }
