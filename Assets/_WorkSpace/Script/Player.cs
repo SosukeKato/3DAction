@@ -83,6 +83,10 @@ public class Player : MonoBehaviour
         {
             _isDash = true;
         }
+        if (_isDash && (_move.x == 0) && (_move.z == 0))
+        {
+            _isDash = false;
+        }
         #endregion
 
         #endregion
