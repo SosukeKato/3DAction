@@ -7,9 +7,6 @@ public class Player : MonoBehaviour
     Health _health;
 
     Vector3 _move;
-    Vector3 _origin;
-    Vector3 _under;
-    Vector3 _front;
 
     float _dashSpeed;
 
@@ -19,10 +16,18 @@ public class Player : MonoBehaviour
     float _moveSpeed;
     [SerializeField]
     int _jumpPower;
+
+
+    #region rayの処理に使う変数
+    Vector3 _origin;
+    Vector3 _size;
+    Vector3 _under;
+    Vector3 _front;
     [SerializeField]
     float _rayFrontDistance;
     [SerializeField]
     float _rayUnderDistance;
+    #endregion
 
     #region 攻撃の処理に使う変数
     float _damageBuff = 1;
@@ -30,6 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     int _nAttackDamage;
     #endregion
+
     void Start()
     {
         _tr = transform;
@@ -47,13 +53,14 @@ public class Player : MonoBehaviour
         #region Raycast使用処理
         //Rayの発射位置などを管理する変数
         _origin = _tr.position;
+        _size = new Vector3(1, 1, 1);
         _under = Vector3.down;
         _front = Vector3.forward;
         #region ジャンプの処理
         //Rayを使った接地判定
         RaycastHit _onGround;
         //接地中の処理
-        if (Physics.Raycast(_origin,_under,out _onGround,_rayUnderDistance))
+        if (Physics.BoxCast(_origin,_size,_under,out _onGround,Quaternion.identity,_rayUnderDistance))
         {
             //ジャンプの処理
             if (Input.GetKeyDown(KeyCode.Space))
@@ -61,7 +68,6 @@ public class Player : MonoBehaviour
                 _rb.AddForce(0, _jumpPower, 0);
             }
         }
-        Debug.DrawRay(_origin, _under * _rayUnderDistance, Color.red);
         #endregion
 
         #region 攻撃の処理
@@ -80,6 +86,8 @@ public class Player : MonoBehaviour
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
         #endregion
 
+        #endregion
+
         #region 回避の処理
         if ((Input.GetKeyDown(KeyCode.LeftShift)) && ((_move.x != 0) || (_move.z != 0)))
         {
@@ -95,8 +103,6 @@ public class Player : MonoBehaviour
         {
             _dashSpeed = 2;
         }
-        #endregion
-
         #endregion
 
         #endregion
