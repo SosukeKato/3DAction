@@ -4,12 +4,14 @@ public class Player : MonoBehaviour
 {
     Rigidbody _rb;
     Transform _tr;
-    Health _hpt;
+    Health _health;
 
     Vector3 _move;
     Vector3 _origin;
     Vector3 _under;
     Vector3 _front;
+
+    float _dashSpeed;
 
     bool _isDash;
 
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour
 
         #region キャラクターの移動
         _move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        _tr.position += new Vector3(_move.x * Time.deltaTime * _moveSpeed, _move.y, _move.z * Time.deltaTime * _moveSpeed);
+        _tr.position += new Vector3(_move.x * Time.deltaTime * _moveSpeed * _dashSpeed, _move.y, _move.z * Time.deltaTime * _moveSpeed * _dashSpeed);
         #endregion
 
         #region Raycast使用処理
@@ -71,8 +73,8 @@ public class Player : MonoBehaviour
             //攻撃の処理
             if (Input.GetMouseButtonDown(0))
             {
-                _hpt = _hitEnemy.collider.gameObject.GetComponent<Health>();
-                _hpt._nowHP -= _nAttackDamage * _damageBuff;
+                _health = _hitEnemy.collider.gameObject.GetComponent<Health>();
+                _health._nowHP -= _nAttackDamage * _damageBuff;
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
@@ -83,10 +85,18 @@ public class Player : MonoBehaviour
         {
             _isDash = true;
         }
+        #region ダッシュの処理
         if (_isDash && (_move.x == 0) && (_move.z == 0))
         {
             _isDash = false;
+            _dashSpeed = 1;
         }
+        if (_isDash)
+        {
+            _dashSpeed = 2;
+        }
+        #endregion
+
         #endregion
 
         #endregion
