@@ -5,10 +5,12 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
     Transform _tr;
     Health _health;
+    Enemy _enemy;
 
     Vector3 _move;
 
     float _dashSpeed;
+    float _noDamageTimer;
 
     bool _isDash;
 
@@ -20,9 +22,11 @@ public class Player : MonoBehaviour
 
     #region rayの処理に使う変数
     Vector3 _origin;
-    Vector3 _size;
     Vector3 _under;
     Vector3 _front;
+
+    [SerializeField]
+    Vector3 _underRaySize = new Vector3(1,1,1);
     [SerializeField]
     float _rayFrontDistance;
     [SerializeField]
@@ -33,7 +37,7 @@ public class Player : MonoBehaviour
     float _damageBuff = 1;
 
     [SerializeField]
-    int _nAttackDamage;
+    int _frontSkillDamage;
     #endregion
 
     void Start()
@@ -53,14 +57,13 @@ public class Player : MonoBehaviour
         #region Raycast使用処理
         //Rayの発射位置などを管理する変数
         _origin = _tr.position;
-        _size = new Vector3(1, 1, 1);
         _under = Vector3.down;
         _front = Vector3.forward;
         #region ジャンプの処理
         //Rayを使った接地判定
         RaycastHit _onGround;
         //接地中の処理
-        if (Physics.BoxCast(_origin,_size,_under,out _onGround,Quaternion.identity,_rayUnderDistance))
+        if (Physics.BoxCast(_origin,_underRaySize,_under,out _onGround,Quaternion.identity,_rayUnderDistance))
         {
             //ジャンプの処理
             if (Input.GetKeyDown(KeyCode.Space))
@@ -80,7 +83,7 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _health = _hitEnemy.collider.gameObject.GetComponent<Health>();
-                _health._nowHP -= _nAttackDamage * _damageBuff;
+                _health._nowHP -= _frontSkillDamage * _damageBuff;
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);
@@ -92,15 +95,24 @@ public class Player : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.LeftShift)) && ((_move.x != 0) || (_move.z != 0)))
         {
             _isDash = true;
+            _enemy = FindAnyObjectByType<Enemy>();
+            _enemy._beforeEnemyDamageBuff = _enemy._enemyDamageBuff;
+            _enemy._enemyDamageBuff = 0;
         }
         #region ダッシュの処理
         if (_isDash && (_move.x == 0) && (_move.z == 0))
         {
             _isDash = false;
             _dashSpeed = 1;
+            _noDamageTimer = 0;
         }
         if (_isDash)
         {
+            _noDamageTimer += Time.deltaTime;
+            if (_noDamageTimer >= 0.3f)
+            {
+                _enemy._enemyDamageBuff = _enemy._beforeEnemyDamageBuff;
+            }
             _dashSpeed = 2;
         }
         #endregion
