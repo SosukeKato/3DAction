@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    bool _isDeath;
+
     [SerializeField]
     float _maxHP;
     [SerializeField]
@@ -15,7 +17,7 @@ public class Health : MonoBehaviour
         }
         if(_nowHP < 0)
         {
-            //キャラクターの死亡処理
+            _isDeath = true;
         }
     }
 }
