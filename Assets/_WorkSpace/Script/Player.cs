@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     float _moveSpeed;
     [SerializeField]
     int _jumpPower;
+    [SerializeField]
+    float _noDamageTime = 0.3f;
 
 
     #region ray‚Ìˆ—‚ÉŽg‚¤•Ï”
@@ -109,7 +111,7 @@ public class Player : MonoBehaviour
         if (_isDash)
         {
             _noDamageTimer += Time.deltaTime;
-            if (_noDamageTimer >= 0.3f)
+            if (_noDamageTimer >= _noDamageTime)
             {
                 _enemy._enemyDamageBuff = _enemy._beforeEnemyDamageBuff;
             }
