@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     float _dashSpeed;
     float _noDamageTimer;
+    float _buffGauge;
 
     bool _isDash;
 
