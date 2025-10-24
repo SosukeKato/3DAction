@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody _rb;
     Transform _tr;
-    Health _health;
+    EnemyHealth _eHealth;
     Enemy _enemy;
 
     Vector3 _move;
@@ -85,8 +85,8 @@ public class Player : MonoBehaviour
             //çUåÇÇÃèàóù
             if (Input.GetMouseButtonDown(0))
             {
-                _health = _hitEnemy.collider.gameObject.GetComponent<Health>();
-                _health._nowHP -= _frontSkillDamage * _damageBuff;
+                _eHealth = _hitEnemy.collider.gameObject.GetComponent<EnemyHealth>();
+                _eHealth._nowHP -= _frontSkillDamage * _damageBuff;
             }
         }
         Debug.DrawRay(_origin, _front * _rayFrontDistance, Color.red);

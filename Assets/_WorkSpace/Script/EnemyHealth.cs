@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    bool _isDeath;
+    bool _isDeath = false;
 
     [SerializeField]
     float _maxHP;
