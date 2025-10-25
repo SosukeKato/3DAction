@@ -8,14 +8,13 @@ public class EnemyHealth : MonoBehaviour
     float _maxHP;
     [SerializeField]
     public float _nowHP;
-
-    void Update()
+    public void Health()
     {
-        if(_nowHP >= _maxHP)
+        if (_nowHP >= _maxHP)
         {
             _nowHP = _maxHP;
         }
-        if(_nowHP < 0)
+        if (_nowHP < 0)
         {
             _isDeath = true;
         }
