@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
     Rigidbody _rb;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
         _tr.position += new Vector3(_move.x * Time.deltaTime * _moveSpeed * _dashSpeed, _move.y, _move.z * Time.deltaTime * _moveSpeed * _dashSpeed);
         #endregion
 
-        #region Raycast使用処理
+        #region Cast使用処理
         //Rayの発射位置などを管理する変数
         _origin = _tr.position;
         _under = Vector3.down;
