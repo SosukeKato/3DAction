@@ -95,6 +95,14 @@ public class Player : MonoBehaviour
 
         #endregion
 
+        #region スキル処理
+        //バフをかけるスキル
+        if (Input.GetKeyDown(KeyCode.G) && _buffGauge >= 100)
+        {
+            _damageBuff = _buffGauge;
+        }
+        #endregion
+
         #region 回避の処理
         if ((Input.GetKeyDown(KeyCode.LeftShift)) && ((_move.x != 0) || (_move.z != 0)))
         {
