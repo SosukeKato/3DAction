@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     float _dashSpeed;
     float _noDamageTimer;
-    public float _buffGauge;
+    public float _overDrive;
 
     bool _isDash;
 
@@ -97,9 +97,9 @@ public class Player : MonoBehaviour
 
         #region スキル処理
         //バフをかけるスキル
-        if (Input.GetKeyDown(KeyCode.G) && _buffGauge >= 100)
+        if (Input.GetKeyDown(KeyCode.G) && _overDrive >= 100)
         {
-            _damageBuff = _buffGauge;
+            _damageBuff = _overDrive;
         }
         #endregion
 
