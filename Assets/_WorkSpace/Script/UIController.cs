@@ -16,6 +16,6 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        _lifeBar.fillAmount = _ph._nowHP / 100;
+        _lifeBar.fillAmount = _ph._nowHP / _ph._maxHP;
     }
 }
