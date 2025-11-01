@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
     bool _isDealth;
 
     [SerializeField]
-    float _maxHP;
+    public float _maxHP;
     [SerializeField]
     public float _nowHP;
 
