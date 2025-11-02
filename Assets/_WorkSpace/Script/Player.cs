@@ -103,6 +103,10 @@ public class Player : MonoBehaviour
             _damageBuff = _overDrive;
             _isOverDrive = true;
         }
+        if (_isOverDrive)
+        {
+            _overDrive -= 1;
+        }
         #endregion
 
         #region ‰ñ”ğ‚Ìˆ—
