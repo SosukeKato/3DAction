@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float _overDrive;
 
     bool _isDash;
+    bool _isOverDrive = false;
 
     [SerializeField]
     float _moveSpeed;
@@ -100,6 +101,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G) && _overDrive >= 100)
         {
             _damageBuff = _overDrive;
+            _isOverDrive = true;
         }
         #endregion
 
