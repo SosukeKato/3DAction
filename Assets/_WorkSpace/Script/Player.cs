@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         }
         if (_isOverDrive)
         {
-            _overDrive -= 1;
+            _overDrive -= Time.deltaTime;
         }
         #endregion
 
