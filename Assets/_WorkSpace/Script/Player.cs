@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
 
         #region スキル処理
         //バフをかけるスキル
-        if (Input.GetKeyDown(KeyCode.G) && _overDrive >= 100)
+        if (Input.GetKeyDown(KeyCode.G) && _overDrive >= 100 && !_isOverDrive)
         {
             _damageBuff = _overDrive;
             _isOverDrive = true;
@@ -107,6 +107,10 @@ public class Player : MonoBehaviour
         if (_isOverDrive)
         {
             _overDrive -= Time.deltaTime;
+        }
+        if (_overDrive <= 0)
+        {
+            _isOverDrive = false;
         }
         #endregion
 
